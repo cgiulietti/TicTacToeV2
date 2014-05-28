@@ -66,7 +66,7 @@ public class TicTacToeLogicImpl implements TicTacToeLogic {
 
    @Override
    public String getWinnerName() {
-	   String player = "No winner";
+	   String player = null;
 
 	   try{
 		   if ( winner == PLAYER1 ){

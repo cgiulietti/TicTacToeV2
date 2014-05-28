@@ -71,9 +71,9 @@ public class TicTacToeUI implements ActionListener {
 
 		   if ( gameLogic.makeMoveAndCheckIfOver( coordinates.row, coordinates.column ) ){ 
 			   if ( gameLogic.getWinnerName() != null ){
-				   System.out.println(gameLogic.getWinnerName()+ " won!");
+				   JOptionPane.showMessageDialog(window,gameLogic.getWinnerName()+ " won! (Click on the grid to start a new game)");
 			   }else{
-				   System.out.println("Tied game!");
+				   JOptionPane.showMessageDialog(window,"Tied game! (Click on the grid to start a new game)");
 			   }
 			   freezed = true;
 		   }
@@ -82,16 +82,36 @@ public class TicTacToeUI implements ActionListener {
 		   if ( button.getText() == " "){
 			   if ( gameLogic.getLastPlayerMadeMove() == TicTacToeLogic.PLAYER1 ){
 				   button.setText("O");
+				   button.setForeground(Color.blue);
+				   button.setFont(button.getFont().deriveFont(Font.BOLD));
 			   }else{
 				   button.setText("X");
+				   button.setForeground(Color.red);
+				   button.setFont(button.getFont().deriveFont(Font.BOLD));
 			   }
 		   }
 
+	   }else{
+		  freezed = false;
+		  gameLogic = new TicTacToeLogicImpl();
+		  resetUI();
 	   }
      
    }
 
-   /* return the coordinates given a button */
+   private void resetUI() {
+	   button11.setText(" ");
+	   button12.setText(" ");
+	   button13.setText(" ");
+	   button21.setText(" ");
+	   button22.setText(" ");
+	   button23.setText(" ");
+	   button31.setText(" ");
+	   button32.setText(" ");
+	   button33.setText(" ");
+   }
+
+/* return the coordinates given a button */
    private Coordinates getCoordinates (Object button) {
       
       Coordinates c = null;
